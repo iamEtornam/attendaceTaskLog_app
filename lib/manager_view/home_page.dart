@@ -1,3 +1,4 @@
+import 'dart:io';
 import 'dart:math';
 
 import 'package:flutter/material.dart';
@@ -23,7 +24,7 @@ class _HomePageState extends State<HomePage> {
               },
                         child: CircleAvatar(
                 radius: 20,
-                backgroundColor: Colors.black,
+                backgroundColor: Platform.isIOS ? Colors.black : Colors.white,
               ),
             ),
           )
@@ -31,19 +32,19 @@ class _HomePageState extends State<HomePage> {
       ),
       body: SafeArea(
               child: ListView.builder(
-          itemCount: 100,
+          itemCount: 70,
           itemBuilder: (context,index){
 return InkWell(
   onTap: (){
-    debugPrint('click $index');
+    Navigator.of(context).pushNamed('/employeeReportView');
   },
   child:   Padding(
      padding: const EdgeInsets.fromLTRB(8,4,8,4),
     child: Row(
       children: <Widget>[
           Container(
-            width: 10,
-            height: 100, 
+            width: 5,
+            height: 70, 
             child: SizedBox(),
             decoration: BoxDecoration(borderRadius: BorderRadius.horizontal(left: Radius.circular(8)),
             color: Colors.primaries[Random().nextInt(Colors.primaries.length)],
@@ -51,7 +52,7 @@ return InkWell(
             ),
             Expanded(
                         child: Container(
-                  height: 100,
+                  height: 70,
                   width: MediaQuery.of(context).size.width,
                 color: Colors.black.withOpacity(.05),
                 child: Row(
