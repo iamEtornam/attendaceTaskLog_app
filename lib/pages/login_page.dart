@@ -182,7 +182,7 @@ class _LoginPageState extends State < LoginPage > {
     bool emailValid =
       RegExp(r"^[a-zA-Z0-9.]+@[a-zA-Z0-9]+\.[a-zA-Z]+").hasMatch(email);
     if (password.isNotEmpty && emailValid) {
-      Navigator.of(context).pushReplacementNamed('/dashboard');
+      Navigator.of(context).pushReplacementNamed('/managerView');
     } else if (password.isEmpty) {
       alertNotification(context, Colors.red, 'Password cannot be Empty.');
     } else if (!emailValid) {
