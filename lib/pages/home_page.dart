@@ -47,21 +47,20 @@ class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-  
       body: ListView.builder(
         controller: _scrollController,
         itemCount: 100,
         itemBuilder: (context,index){
 return Slidable(
-  actionPane: Platform.isIOS ? SlidableStrechActionPane() : SlidableDrawerActionPane,
+  actionPane: Platform.isIOS ? SlidableStrechActionPane() : SlidableDrawerActionPane(),
   actionExtentRatio: 0.25,
   child: Padding(
      padding: const EdgeInsets.fromLTRB(8,4,8,4),
     child: Row(
       children: <Widget>[
         Container(
-          width: 10,
-          height: 100, 
+          width: 5,
+          height: 80, 
           child: SizedBox(),
           decoration: BoxDecoration(borderRadius: BorderRadius.horizontal(left: Radius.circular(8)),
           color: Colors.primaries[Random().nextInt(Colors.primaries.length)],
@@ -69,7 +68,7 @@ return Slidable(
           ),
           Expanded(
                       child: Container(
-                height: 100,
+                height: 80,
                 width: MediaQuery.of(context).size.width,
               color: Colors.black.withOpacity(.05),
               child: Row(
