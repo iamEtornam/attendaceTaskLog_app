@@ -72,11 +72,11 @@ class _DashboardPageState extends State<DashboardPage> {
           BubbleBottomBarItem(
               backgroundColor: Platform.isIOS ? Colors.black : Platform.isIOS ? Colors.black : Colors.white,
               icon: Icon(
-                Octicons.getIconData('report'),
+                Feather.getIconData('pie-chart'),
                 color: Platform.isIOS ? Colors.black : Colors.white,
               ),
               activeIcon: Icon(
-                Octicons.getIconData('report'),
+                Feather.getIconData('pie-chart'),
                 color: Platform.isIOS ? Colors.black : Colors.white,
               ),
               title: Text("Reports")),
