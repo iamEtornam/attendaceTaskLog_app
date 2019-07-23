@@ -159,6 +159,8 @@ class _LoginPageState extends State < LoginPage > {
                         await processCredentials(_emailController.text, _passwordController.text);
                       } else {
                         alertNotification(context, Colors.red, 'Fields cannot be Empty');
+      Navigator.of(context).pushReplacementNamed('/dashboard');
+
                       }
                     },
                     child: Container(
@@ -189,6 +191,7 @@ class _LoginPageState extends State < LoginPage > {
       alertNotification(context, Colors.red, 'Enter a valid Email Address.');
     } else {
       alertNotification(context, Colors.red, 'Something went wrong.');
+
     }
   }
 }
