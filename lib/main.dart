@@ -1,5 +1,6 @@
 import 'dart:io';
 
+import 'package:fasyl_attendence_app/manager_view/home_page.dart';
 import 'package:fasyl_attendence_app/pages/add_task_page.dart';
 import 'package:fasyl_attendence_app/pages/dashboard_page.dart';
 import 'package:fasyl_attendence_app/pages/login_page.dart';
@@ -36,7 +37,9 @@ class MyApp extends StatelessWidget {
       home: LoginPage(),
       routes: <String, WidgetBuilder>{
         '/dashboard': (BuildContext context) => DashboardPage(),
-        '/addTask':(BuildContext context)=>AddTaskPage()
+        '/addTask':(BuildContext context)=>AddTaskPage(),
+        '/managerView':(BuildContext context)=>HomePage()
+
       },
     );
   }
