@@ -3,6 +3,7 @@ package com.fasylgroup.attendance_rest.model;
 import java.util.HashSet;
 import java.util.Set;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
@@ -11,6 +12,7 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.UniqueConstraint;
 import javax.validation.constraints.Email;
@@ -18,6 +20,8 @@ import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Size;
 
 import org.hibernate.annotations.NaturalId;
+
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 @Entity
 @Table(name = "users", uniqueConstraints = {
@@ -28,6 +32,7 @@ import org.hibernate.annotations.NaturalId;
             "email"
         })
 })
+@JsonIgnoreProperties(value = {"createdAt", "updatedAt"})
 public class User{
 	@Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -62,6 +67,9 @@ public class User{
     @NotBlank
     @Size(max = 100)
     private String photo;
+    
+    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
+    private Set<Task> tasks;
 
     @ManyToMany(fetch = FetchType.LAZY)
     @JoinTable(name = "user_roles", 
@@ -159,6 +167,32 @@ public class User{
 	public void setPhoto(String photo) {
 		this.photo = photo;
 	}
+
+	public Set<Task> getTasks() {
+		return tasks;
+	}
+
+	public void setTasks(Set<Task> tasks) {
+		this.tasks = tasks;
+	}
+
+	@Override
+	public String toString() {
+		 String result = String.format("User [id=" + id + ", name=" + name + ", username=" + username + ", email=" + email + ", password="
+					+ password + ", phone=" + phone + ", department=" + department + ", photo=" + photo + ", task=" + tasks
+					+ ", roles=" + roles + "]");
+	        if (tasks != null) {
+	            for(Task task : tasks) {
+	                result += String.format("User [id=" + id + ", name=" + name + ", username=" + username + ", email=" + email + ", password="
+	    					+ password + ", phone=" + phone + ", department=" + department + ", photo=" + photo + ", task=" + tasks
+	    					+ ", roles=" + roles + "]");
+	            }
+	        }
+
+	        return result;
+	
+	}
     
+	
     
 }
