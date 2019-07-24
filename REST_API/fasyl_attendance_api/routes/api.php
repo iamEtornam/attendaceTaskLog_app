@@ -1,6 +1,5 @@
 <?php
 
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -15,11 +14,15 @@ use Illuminate\Support\Facades\Route;
 */
 
 
-Route::post('user_login', 'AuthController@login');
-Route::post('user_register', 'AuthController@register');
+Route::post('user_login', 'AuthController@user_login');
+Route::post('user_register', 'AuthController@user_register');
+Route::post('manager_login', 'AuthController@manager_login');
+Route::post('manager_register', 'AuthController@manager_register');
 
 Route::middleware('auth:api')->group(function () {
     Route::get('user', 'AuthController@details');
+    Route::get('getManagerUsers', 'AuthController@getManagerUser');
+    Route::get('logout', 'AuthController@logout');
 
-    Route::resource('products', 'ProductController');
+    Route::apiResource('tasks', 'TaskController');
 });
