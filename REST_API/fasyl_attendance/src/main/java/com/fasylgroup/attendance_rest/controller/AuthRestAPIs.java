@@ -14,6 +14,7 @@ import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -97,7 +98,6 @@ public class AuthRestAPIs {
 	    			Role adminRole = roleRepository.findByName(RoleName.ROLE_ADMIN)
 	                .orElseThrow(() -> new RuntimeException("Fail! -> Cause: User Role not find."));
 	    			roles.add(adminRole);
-	    			
 	    			break;
 	    		case "pm":
 	            	Role pmRole = roleRepository.findByName(RoleName.ROLE_PM)
@@ -117,4 +117,10 @@ public class AuthRestAPIs {
 
         return ResponseEntity.ok().body("User registered successfully!");
     }
+    
+    @GetMapping("/user/{id}")
+    public Object getCurrentUser(Long id) {
+    	return userRepository.findCurrentUser(id);
+    }
+    
 }
