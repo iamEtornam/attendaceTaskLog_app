@@ -50,6 +50,18 @@ public class User{
     @NotBlank
     @Size(min=6, max = 100)
     private String password;
+    
+    @NotBlank
+    @Size(min=10, max = 13)
+    private String phone;
+    
+    @NotBlank
+    @Size(max = 50)
+    private String department;
+    
+    @NotBlank
+    @Size(max = 100)
+    private String photo;
 
     @ManyToMany(fetch = FetchType.LAZY)
     @JoinTable(name = "user_roles", 
@@ -59,14 +71,24 @@ public class User{
 
     public User() {}
 
-    public User(String name, String username, String email, String password) {
-        this.name = name;
-        this.username = username;
-        this.email = email;
-        this.password = password;
-    }
+    public User(@NotBlank @Size(min = 3, max = 50) String name,
+    		@NotBlank @Size(min = 3, max = 50) String username,
+			@NotBlank @Size(max = 50) @Email String email, 
+			@NotBlank @Size(min = 6, max = 100) String password,
+			@NotBlank @Size(min = 10, max = 13) String phone,
+			@NotBlank @Size(max = 50) String department,
+			@NotBlank @Size(max = 100) String photo) {
+		super();
+		this.name = name;
+		this.username = username;
+		this.email = email;
+		this.password = password;
+		this.phone = phone;
+		this.department = department;
+		this.photo = photo;
+	}
 
-    public Long getId() {
+	public Long getId() {
         return id;
     }
 
@@ -113,4 +135,30 @@ public class User{
     public void setRoles(Set<Role> roles) {
         this.roles = roles;
     }
+
+	public String getPhone() {
+		return phone;
+	}
+
+	public void setPhone(String phone) {
+		this.phone = phone;
+	}
+
+	public String getDepartment() {
+		return department;
+	}
+
+	public void setDepartment(String department) {
+		this.department = department;
+	}
+
+	public String getPhoto() {
+		return photo;
+	}
+
+	public void setPhoto(String photo) {
+		this.photo = photo;
+	}
+    
+    
 }
