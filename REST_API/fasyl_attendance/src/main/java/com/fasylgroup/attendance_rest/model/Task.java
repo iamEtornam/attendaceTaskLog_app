@@ -16,7 +16,12 @@ import java.util.Date;
 @JsonIgnoreProperties(value = {"createdAt", "updatedAt"}, 
         allowGetters = true)
 public class Task implements Serializable {
-    @Id
+    /**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
+	@Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
@@ -26,13 +31,22 @@ public class Task implements Serializable {
     @NotBlank
     private String description;
     
-    @NotBlank
+    @Column(nullable = false)
     private Date startTime;
     
-    @NotBlank
+    @Column(nullable = true)
     private Date endTime;
     
-    //foreign_key (user id) here
+    @Column(nullable = true)
+    private Boolean isCompleted;
+    
+    @Column(nullable = true)
+    private Boolean isInProgress;
+   
+    
+    @ManyToOne
+    @JoinColumn(name = "user_id")
+    private User user;
     
 
     @Column(nullable = false, updatable = false)
@@ -44,4 +58,95 @@ public class Task implements Serializable {
     @Temporal(TemporalType.TIMESTAMP)
     @LastModifiedDate
     private Date updatedAt;
+    
+    
+
+	public Task() {
+
+	}
+
+	public Long getId() {
+		return id;
+	}
+
+	public void setId(Long id) {
+		this.id = id;
+	}
+
+	public String getTitle() {
+		return title;
+	}
+
+	public void setTitle(String title) {
+		this.title = title;
+	}
+
+	public String getDescription() {
+		return description;
+	}
+
+	public void setDescription(String description) {
+		this.description = description;
+	}
+
+	public Date getStartTime() {
+		return startTime;
+	}
+
+	public void setStartTime(Date startTime) {
+		this.startTime = startTime;
+	}
+
+	public Date getEndTime() {
+		return endTime;
+	}
+
+	public void setEndTime(Date endTime) {
+		this.endTime = endTime;
+	}
+
+	public User getUser() {
+		return user;
+	}
+
+	public void setUser(User user) {
+		this.user = user;
+	}
+
+	public Date getCreatedAt() {
+		return createdAt;
+	}
+
+	public void setCreatedAt(Date createdAt) {
+		this.createdAt = createdAt;
+	}
+
+	public Date getUpdatedAt() {
+		return updatedAt;
+	}
+
+	public void setUpdatedAt(Date updatedAt) {
+		this.updatedAt = updatedAt;
+	}
+
+	public Boolean getIsCompleted() {
+		return isCompleted;
+	}
+
+	public void setIsCompleted(Boolean isCompleted) {
+		this.isCompleted = isCompleted;
+	}
+
+	public Boolean getIsInProgress() {
+		return isInProgress;
+	}
+
+	public void setIsInProgress(Boolean isInProgress) {
+		this.isInProgress = isInProgress;
+	}
+    
+	
+	
+    
+    
 }
