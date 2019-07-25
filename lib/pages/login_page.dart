@@ -109,7 +109,9 @@ class _LoginPageState extends State<LoginPage> {
                         errorStyle: TextStyle(
                           color: Colors.red,
                         ),
+                      
                       ),
+                    
                       validator: (value) {
                         if (value.isEmpty) {
                           return 'Please enter your Email';
