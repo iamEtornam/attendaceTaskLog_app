@@ -32,6 +32,12 @@ dependencies:
   circular_check_box: ^0.0.2
   pie_chart: ^1.2.0
   bubble_tab_indicator: ^0.1.4
+  firebase_core: ^0.4.0+8
+  firebase_auth: ^0.11.1+12
+  cloud_firestore: ^0.12.7+1
+  custom_progress_dialog: ^1.0.0
+  flutter_datetime_picker: ^1.2.5
+
 
 dev_dependencies:
   flutter_test:
