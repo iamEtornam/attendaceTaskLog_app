@@ -35,7 +35,6 @@ class _HomePageState extends State<HomePage> {
     setState(() {
       mUserId = currentUser.uid;
     });
-    debugPrint('userID: ${currentUser.uid}');
   }
 
   @override
@@ -73,7 +72,7 @@ class _HomePageState extends State<HomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: mUserId == null
-          ? Container()
+          ? ErrorDisplayWidget()
           : StreamBuilder<Object>(
               stream: _database
                   .collection(task)
@@ -82,8 +81,11 @@ class _HomePageState extends State<HomePage> {
                   .orderBy('timestamp', descending: true)
                   .snapshots(),
               builder: (context, snapshot) {
-                debugPrint('error: ${snapshot.error}');
                 if (snapshot.hasError) {
+                  return ErrorDisplayWidget();
+                }
+
+                if(snapshot.hasData == false){
                   return ErrorDisplayWidget();
                 }
 
@@ -115,8 +117,7 @@ class _HomePageState extends State<HomePage> {
                         var formatter = DateFormat.yMMMMd("en_US").add_jm();
                         String formatted = formatter.format(date);
 
-                       String isEdited = taskData['is_edited'].toString() == 'true' ? 'edited' : '';
-                        debugPrint('isEdited: $taskData');
+
                         return Slidable(
                           actionPane: Platform.isIOS
                               ? SlidableStrechActionPane()
@@ -180,18 +181,7 @@ class _HomePageState extends State<HomePage> {
                                               SizedBox(
                                                 height: 8,
                                               ),
-                                              Row(
-                                                mainAxisAlignment:
-                                                    MainAxisAlignment
-                                                        .spaceBetween,
-                                                children: <Widget>[
-                                                  Text(formatted),
-                                                  Padding(
-                                                    padding: const EdgeInsets.only(right:5.0),
-                                                    child: Text(isEdited),
-                                                  ),
-                                                ],
-                                              )
+                                              Text(formatted),
                                             ],
                                           ),
                                         )
