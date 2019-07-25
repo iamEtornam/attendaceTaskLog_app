@@ -23,7 +23,6 @@ saveNewTask(BuildContext context, String title, String description, startTime,
     'end_time': endTime,
     'is_completed': false,
     'is_in_progress': true,
-    'is_edited': false,
     'timestamp': DateTime.now(),
     'user_id': currentUser.uid
   }).then((_) {
@@ -70,7 +69,6 @@ saveEditTask(BuildContext context, String title, String description, startTime,
     'description': description,
     'start_time': startTime,
     'end_time': endTime,
-    'is_edited': true,
     'timestamp': DateTime.now(),
   }, merge: true).then((_) {
     _progressDialog.dismissProgressDialog(context);
