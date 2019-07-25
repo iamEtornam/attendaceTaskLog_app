@@ -7,12 +7,11 @@ import 'package:fasyl_attendence_app/utils/utils.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_icons/flutter_icons.dart';
 import 'package:flutter_platform_widgets/flutter_platform_widgets.dart';
 
 final FirebaseAuth _auth = FirebaseAuth.instance;
 final Firestore _database = Firestore.instance;
-final String employee = 'Employees';
+final String users = 'Users';
 
 class ProfilePage extends StatefulWidget {
   @override
@@ -48,7 +47,7 @@ class _ProfilePageState extends State<ProfilePage> {
           ? Container()
           : StreamBuilder<DocumentSnapshot>(
               stream:
-                  _database.collection(employee).document(mUserId).snapshots(),
+                  _database.collection(users).document(mUserId).snapshots(),
               builder: (context, snapshot) {
                 if (snapshot.hasError) {
                   return ErrorDisplayWidget();
