@@ -158,8 +158,8 @@ class _HomePageState extends State<HomePage> {
                               default:
                                 DocumentSnapshot documentSnapshot =
                                     snapshot.data;
-                                debugPrint(
-                                    'user data: ${documentSnapshot.documentID}');
+//                                debugPrint(
+//                                    'user data: ${documentSnapshot.documentID}');
                                 return InkWell(
                                   onTap: () {
                                     Navigator.of(context)
@@ -167,9 +167,11 @@ class _HomePageState extends State<HomePage> {
                                     Navigator.push(
                                         context,
                                         MaterialPageRoute(
-                                            builder: (context) => EmployeeReportPage(
-                                              employeeID: documentSnapshot.documentID,
-                                            )));
+                                            builder: (context) =>
+                                                EmployeeReportPage(
+                                                  employeeID: documentSnapshot
+                                                      .documentID,
+                                                )));
                                   },
                                   child: Padding(
                                     padding:
@@ -211,7 +213,10 @@ class _HomePageState extends State<HomePage> {
                                                     radius: 25,
                                                     backgroundColor:
                                                         Colors.black,
-                                                    backgroundImage: NetworkImage(documentSnapshot.data['photo']),
+                                                    backgroundImage:
+                                                        NetworkImage(
+                                                            documentSnapshot
+                                                                .data['photo']),
                                                   ),
                                                 ),
                                                 SizedBox(
@@ -238,7 +243,8 @@ class _HomePageState extends State<HomePage> {
                                                       SizedBox(
                                                         height: 8,
                                                       ),
-                                                      Text('${documentSnapshot.data['department']}')
+                                                      Text(
+                                                          '${documentSnapshot.data['department']}')
                                                     ],
                                                   ),
                                                 )
