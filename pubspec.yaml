@@ -30,7 +30,6 @@ dependencies:
   intl: ^0.15.8
   flutter_slidable: ^0.5.3
   circular_check_box: ^0.0.2
-  pie_chart: ^1.2.0
   bubble_tab_indicator: ^0.1.4
   firebase_core: ^0.4.0+8
   firebase_auth: ^0.11.1+12
