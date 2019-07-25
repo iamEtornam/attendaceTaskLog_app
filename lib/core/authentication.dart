@@ -26,3 +26,15 @@ Future emailPasswordLogin(BuildContext context, String email, String password) a
 debugPrint('error: $e');
   }
 }
+
+//reset user password
+processPasswordChange(BuildContext context) async{
+  FirebaseUser currentUser = await _auth.currentUser();
+_auth.sendPasswordResetEmail(email: currentUser.email)
+  .then((value){
+  alertNotification(context, Colors.green, 'Reset Link sent. Check your mail.');
+})
+  .catchError((error){
+  alertNotification(context, Colors.red, 'Could not send link!');
+});
+}
