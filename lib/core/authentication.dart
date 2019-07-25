@@ -42,9 +42,11 @@ getRole(BuildContext context) async {
       .get()
       .then((documentSnapshot) {
     if (documentSnapshot.data['role'] == 'employee') {
-      Navigator.of(context).pushReplacementNamed('/dashboard');
+     Navigator.pushNamedAndRemoveUntil(context, '/dashboard', (Route<dynamic> route) => false,);
+
     } else {
-      Navigator.of(context).pushReplacementNamed('/managerView');
+     Navigator.pushNamedAndRemoveUntil(context, '/managerView', (Route<dynamic> route) => false,);
+
     }
   }).catchError((error) {});
 }
@@ -72,7 +74,8 @@ logout(BuildContext context) async {
   if (currentUser != null) {
     await _auth.signOut().then((_) {
       _progressDialog.dismissProgressDialog(context);
-      Navigator.of(context).pushReplacementNamed('/login');
+     Navigator.pushNamedAndRemoveUntil(context, '/login', (Route<dynamic> route) => false,);
+
     }).catchError((error) {
       _progressDialog.dismissProgressDialog(context);
       alertNotification(context, Colors.red, 'Could not Log out!');
