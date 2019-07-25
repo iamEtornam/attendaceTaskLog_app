@@ -8,25 +8,30 @@ class ErrorDisplayWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.center,
-      mainAxisAlignment: MainAxisAlignment.center,
-      children: <Widget>[
-        Icon(
-          Ionicons.getIconData('ios-sad'),
-          size: 50,
-          color: Colors.black,
+    return Container(
+      child: Center(
+        child: ListView(
+          shrinkWrap: true,
+          children: <Widget>[
+            Icon(
+              Ionicons.getIconData('ios-sad'),
+              size: 50,
+              color: Colors.black,
+            ),
+            SizedBox(
+              height: 10,
+            ),
+            Center(
+              child: Text(
+                'No data at the moment!',
+                style: TextStyle(
+                  color: Colors.black,
+                ),
+              ),
+            )
+          ],
         ),
-        SizedBox(
-          height: 10,
-        ),
-        Text(
-          'Something went wrong!',
-          style: TextStyle(
-            color: Colors.black,
-          ),
-        )
-      ],
+      ),
     );
   }
 }
