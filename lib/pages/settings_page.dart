@@ -109,6 +109,7 @@ class _SettingsPageState extends State<SettingsPage> {
     );
   }
 
+  //url launcher for the various options
   _launchURL(String url) async {
     if (await canLaunch(url)) {
       await launch(url);
