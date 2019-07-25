@@ -2,6 +2,7 @@ import 'dart:io';
 
 import 'package:fasyl_attendence_app/manager_view/employee_report_page.dart';
 import 'package:fasyl_attendence_app/manager_view/home_page.dart';
+import 'package:fasyl_attendence_app/manager_view/manager_profile_page.dart';
 import 'package:fasyl_attendence_app/pages/add_task_page.dart';
 import 'package:fasyl_attendence_app/pages/dashboard_page.dart';
 import 'package:fasyl_attendence_app/pages/edit_task_page.dart';
@@ -39,6 +40,7 @@ class MyApp extends StatelessWidget {
       home: LoginPage(),
       routes: <String, WidgetBuilder>{
         '/login': (BuildContext context) => LoginPage(),
+        '/managerProfile': (BuildContext context) => ManagerProfilePage(),
         '/dashboard': (BuildContext context) => DashboardPage(),
         '/addTask':(BuildContext context)=>AddTaskPage(),
         '/managerView':(BuildContext context)=>HomePage(),
