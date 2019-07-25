@@ -11,33 +11,74 @@ FirebaseUser currentUser;
 final String task = 'Tasks';
 
 //add new task to database
-saveNewTask(BuildContext context, String title, String description, startTime, endTime) async{
+saveNewTask(BuildContext context, String title, String description, startTime,
+    endTime) async {
   _progressDialog.showProgressDialog(context,
       textToBeDisplayed: 'Please wait...');
   currentUser = await _auth.currentUser();
-//  _database.collection(task).where('user_id', isEqualTo: currentUser.uid).snapshots().listen((snapshots){
-//
-//  })
-
   _database.collection(task).document().setData({
-    'title':title,
-    'description':description,
-    'start_time':startTime,
-    'end_time':endTime,
-    'is_completed':false,
-    'is_in_progress':true,
-    'timestamp':DateTime.now(),
-    'user_id':currentUser.uid
-  })
-  .then((_){
+    'title': title,
+    'description': description,
+    'start_time': startTime,
+    'end_time': endTime,
+    'is_completed': false,
+    'is_in_progress': true,
+    'is_edited': false,
+    'timestamp': DateTime.now(),
+    'user_id': currentUser.uid
+  }).then((_) {
     _progressDialog.dismissProgressDialog(context);
     alertNotification(context, Colors.green, 'Task Saved!');
-  })
-  .then((_){
+  }).then((_) {
     Navigator.pushReplacementNamed(context, '/dashboard');
-  })
-  .catchError((error){
+  }).catchError((error) {
     _progressDialog.dismissProgressDialog(context);
     alertNotification(context, Colors.red, 'Could not save Task!');
+  });
+}
+
+//change completed state to true or false
+changeCompletionState(
+    BuildContext context, bool isCompleted, String taskID) async {
+  _database
+      .collection(task)
+      .document(taskID)
+      .updateData({'is_completed': isCompleted}).then((_) {
+    alertNotification(context, Colors.green, 'Mark as Completed!');
+  }).catchError((error) {
+    alertNotification(context, Colors.red, 'Something went wrong');
+  });
+}
+
+//delete task
+deleteTask(BuildContext context, String taskID) async {
+  _database.collection(task).document(taskID).delete().then((_) {
+    alertNotification(context, Colors.green, 'Task Deleted!');
+  }).catchError((error) {
+    alertNotification(context, Colors.red, 'Could not delete Task');
+  });
+}
+
+//edit single task
+saveEditTask(BuildContext context, String title, String description, startTime,
+    endTime, String taskID) async {
+  _progressDialog.showProgressDialog(context,
+      textToBeDisplayed: 'Please wait...');
+  currentUser = await _auth.currentUser();
+  _database.collection(task).document(taskID).setData({
+    'title': title,
+    'description': description,
+    'start_time': startTime,
+    'end_time': endTime,
+    'is_edited': true,
+    'timestamp': DateTime.now(),
+  }, merge: true).then((_) {
+    _progressDialog.dismissProgressDialog(context);
+    alertNotification(context, Colors.green, 'Editted Task Saved!');
+  }).then((_) {
+    Navigator.pushReplacementNamed(context, '/dashboard');
+  }).catchError((error) {
+    _progressDialog.dismissProgressDialog(context);
+    alertNotification(context, Colors.red, 'Could not save Editted Task!');
   });
 }
