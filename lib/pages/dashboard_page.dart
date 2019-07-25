@@ -5,10 +5,12 @@ import 'package:fasyl_attendence_app/pages/home_page.dart';
 import 'package:fasyl_attendence_app/pages/profile_page.dart';
 import 'package:fasyl_attendence_app/pages/reports_page.dart';
 import 'package:fasyl_attendence_app/pages/settings_page.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:flutter_icons/flutter_icons.dart';
 
+final FirebaseAuth _auth = FirebaseAuth.instance;
 class DashboardPage extends StatefulWidget {
   @override
   _DashboardPageState createState() => _DashboardPageState();
@@ -26,6 +28,7 @@ class _DashboardPageState extends State<DashboardPage> {
 
   @override
   void initState() {
+    isUserAuthenticated();
     super.initState();
   }
 
@@ -105,5 +108,12 @@ class _DashboardPageState extends State<DashboardPage> {
         ],
       ),
     );
+  }
+
+  void isUserAuthenticated() async{
+    FirebaseUser user = await _auth.currentUser();
+    if(user == null){
+      Navigator.of(context).pushReplacementNamed('/login');
+    }
   }
 }
