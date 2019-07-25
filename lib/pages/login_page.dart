@@ -215,7 +215,7 @@ class _LoginPageState extends State<LoginPage> {
         RegExp(r"^[a-zA-Z0-9.]+@[a-zA-Z0-9]+\.[a-zA-Z]+").hasMatch(email);
     if (password.isNotEmpty && emailValid) {
       emailPasswordLogin(context, email, password).then((_) {
-        Navigator.of(context).pushReplacementNamed('/dashboard');
+        getRole(context);
       });
     } else if (password.isEmpty) {
       alertNotification(context, Colors.red, 'Password cannot be Empty.');
@@ -227,10 +227,10 @@ class _LoginPageState extends State<LoginPage> {
   }
 
   //check if user is already authenticated
-  void isUserAuthenticated() async{
+  void isUserAuthenticated() async {
     FirebaseUser user = await _auth.currentUser();
-    if(user != null){
-      Navigator.of(context).pushReplacementNamed('/dashboard');
+    if (user != null) {
+      getRole(context);
     }
   }
 }
