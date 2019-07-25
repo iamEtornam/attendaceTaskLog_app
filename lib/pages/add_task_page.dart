@@ -37,7 +37,7 @@ class _AddTaskPageState extends State<AddTaskPage> {
               color: Colors.black,
               fontSize: 16.0,
             ),
-            keyboardType: TextInputType.phone,
+            keyboardType: TextInputType.text,
             enableInteractiveSelection: true,
             decoration: InputDecoration(
               hasFloatingPlaceholder: true,
@@ -76,7 +76,7 @@ class _AddTaskPageState extends State<AddTaskPage> {
             ),
             minLines: 4,
             maxLines: 10,
-            keyboardType: TextInputType.phone,
+            keyboardType: TextInputType.text,
             enableInteractiveSelection: true,
             decoration: InputDecoration(
               hasFloatingPlaceholder: true,
