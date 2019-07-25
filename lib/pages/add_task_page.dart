@@ -1,10 +1,23 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_datetime_picker/flutter_datetime_picker.dart';
 
-class AddTaskPage extends StatelessWidget {
+class AddTaskPage extends StatefulWidget {
+  @override
+  _AddTaskPageState createState() => _AddTaskPageState();
+}
+
+class _AddTaskPageState extends State<AddTaskPage> {
      final TextEditingController _titleController = TextEditingController();
+
             final TextEditingController _descController = TextEditingController();
+
   final _titleFocusNode = FocusNode();
+
   final _descFocusNode = FocusNode();
+
+  var startTime;
+
+  var endTime;
 
   @override
   Widget build(BuildContext context) {
@@ -86,7 +99,58 @@ class AddTaskPage extends StatelessWidget {
         color: Colors.red,
              ),
            ),
-         )      
+         ) ,
+         SizedBox(height: 15,),
+         Row(
+           crossAxisAlignment: CrossAxisAlignment.center,
+           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+           children: <Widget>[
+             InkWell(
+               onTap: (){
+                 DatePicker.showTimePicker(context, showTitleActions: true,
+                     onChanged: (date) {
+                       print('change $date in time zone ' +
+                           date.timeZoneOffset.inHours.toString());
+                     }, onConfirm: (date) {
+                       print('confirm $date');
+                       startTime = date;
+                     }, currentTime: DateTime.now());
+               },
+               child: Material(
+                 type: MaterialType.button,
+                 borderRadius: BorderRadius.circular(45),
+                 color: Colors.green,
+                 child: Padding(
+                   padding: const EdgeInsets.all(15.0),
+                   child: Text('Pick a Start Time',style: TextStyle(color: Colors.white),),
+                 ),
+               ),
+             ),
+             InkWell(
+               onTap: (){
+                 DatePicker.showTimePicker(context, showTitleActions: true,
+                     onChanged: (date) {
+                       print('change $date in time zone ' +
+                           date.timeZoneOffset.inHours.toString());
+                     }, onConfirm: (date) {
+                       print('confirm $date');
+                       setState(() {
+                         endTime = date;
+                       });
+                     }, currentTime: DateTime.now());
+               },
+               child: Material(
+                 type: MaterialType.button,
+                 borderRadius: BorderRadius.circular(45),
+                 color: Colors.red,
+                 child: Padding(
+                   padding: const EdgeInsets.all(15.0),
+                   child: Text('Pick a End Time',style: TextStyle(color: Colors.white),),
+                 ),
+               ),
+             ),
+           ],
+         )
         ],
       ),
       bottomNavigationBar:Padding(
@@ -98,8 +162,8 @@ class AddTaskPage extends StatelessWidget {
           child: MaterialButton(
             minWidth: MediaQuery.of(context).size.width / 2,
             height: 45.0,
-            onPressed: () {
-             
+            onPressed: () async{
+             await validateTaskDetails(_titleController.text, _descController.text, startTime, endTime);
             },
             child: Text(
               'Add Task',
@@ -113,4 +177,20 @@ class AddTaskPage extends StatelessWidget {
       ),
     );
   }
+
+   validateTaskDetails(String title, String description, startTime, endTime) async{
+    if(title.isNotEmpty && startTime != null && endTime != null || description.isNotEmpty){
+      await saveNewTask(title, description, startTime, endTime);
+    }else if(title.isEmpty){
+
+    }else if(startTime == null){
+
+    }else if(endTime == null){
+
+    }else{
+
+    }
+  }
+
+  saveNewTask(String title, String description, startTime, endTime) async{}
 }
