@@ -1,16 +1,17 @@
-
 import 'package:bubble_tab_indicator/bubble_tab_indicator.dart';
 import 'package:fasyl_attendence_app/pages/fragments/completed_fragment.dart';
+import 'package:fasyl_attendence_app/pages/fragments/delayed_fragment.dart';
+import 'package:fasyl_attendence_app/pages/fragments/in_progress_fragment.dart';
+import 'package:fasyl_attendence_app/pages/fragments/uncompleted_fragment.dart';
 import 'package:flutter/material.dart';
-import 'package:pie_chart/pie_chart.dart';
 
 class EmployeeReportPage extends StatefulWidget {
   @override
   _EmployeeReportPageState createState() => _EmployeeReportPageState();
 }
 
-class _EmployeeReportPageState extends State<EmployeeReportPage> with SingleTickerProviderStateMixin{
-Map<String, double> dataMap = new Map();
+class _EmployeeReportPageState extends State<EmployeeReportPage>
+    with SingleTickerProviderStateMixin {
   TabController _tabController;
   final List<Tab> tabs = <Tab>[
     Tab(text: 'Completed'),
@@ -19,56 +20,55 @@ Map<String, double> dataMap = new Map();
     Tab(text: 'Uncompleted'),
   ];
 
-@override
+  @override
   void initState() {
-        _tabController = new TabController(vsync: this, length: tabs.length);
+    _tabController = new TabController(vsync: this, length: tabs.length);
 
-    dataMap.putIfAbsent('Uncompleted', () => 3);
-dataMap.putIfAbsent('In-Progress', () => 3);
-dataMap.putIfAbsent('Completed', () => 8);
-dataMap.putIfAbsent('Delayed', () => 2);
     super.initState();
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-       appBar: AppBar(
+      appBar: AppBar(
         centerTitle: true,
-        title: Text('Employee Report',style: TextStyle(fontSize: 20),),
+        title: Text(
+          'Employee Report',
+          style: TextStyle(fontSize: 20),
+        ),
       ),
       body: Padding(
         padding: const EdgeInsets.all(12.0),
         child: Column(
           children: <Widget>[
-            Text('Employee Name here',style: TextStyle(fontSize: 20),),
-            PieChart(dataMap: dataMap) ,
-            SizedBox(height: 15,),
+            Text(
+              'Employee Name here',
+              style: TextStyle(fontSize: 20),
+            ),
             TabBar(
-            isScrollable: true,
-            unselectedLabelColor: Colors.grey,
-            labelColor: Colors.white,
-            indicatorSize: TabBarIndicatorSize.tab,
-            indicator: BubbleTabIndicator(
-              indicatorHeight: 30.0,
-              indicatorColor: Colors.black,
-              tabBarIndicatorSize: TabBarIndicatorSize.tab,
-            ),
-            tabs: tabs,
-            controller: _tabController,
-          ),
-          Expanded(
-            child: TabBarView(
+              isScrollable: true,
+              unselectedLabelColor: Colors.grey,
+              labelColor: Colors.white,
+              indicatorSize: TabBarIndicatorSize.tab,
+              indicator: BubbleTabIndicator(
+                indicatorHeight: 30.0,
+                indicatorColor: Colors.black,
+                tabBarIndicatorSize: TabBarIndicatorSize.tab,
+              ),
+              tabs: tabs,
               controller: _tabController,
-              children: <Widget>[
-                CompletedFragment(),
-                CompletedFragment(),
-                CompletedFragment(),
-                CompletedFragment(),
-
-              ],
             ),
-          )
+            Expanded(
+              child: TabBarView(
+                controller: _tabController,
+                children: <Widget>[
+                  CompletedFragment(),
+                  InProgressFragment(),
+                  DelayedFragment(),
+                  UncompletedFragment(),
+                ],
+              ),
+            )
           ],
         ),
       ),
