@@ -2,6 +2,7 @@ import 'dart:io';
 
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:fasyl_attendence_app/core/authentication.dart';
+import 'package:fasyl_attendence_app/pages/fragments/error_display_widget.dart';
 import 'package:fasyl_attendence_app/utils/utils.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
@@ -24,7 +25,6 @@ class _ProfilePageState extends State<ProfilePage> {
   final _emailController = TextEditingController();
   final _phoneController = TextEditingController();
   final _departmentController = TextEditingController();
-
   FirebaseUser currentUser;
   String mUserId;
 
@@ -379,31 +379,5 @@ class _ProfilePageState extends State<ProfilePage> {
 
   void changeUserPassword(BuildContext context) async {
     await processPasswordChange(context);
-  }
-}
-
-class ErrorDisplayWidget extends StatelessWidget {
-  const ErrorDisplayWidget({
-    Key key,
-  }) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.center,
-      mainAxisAlignment: MainAxisAlignment.center,
-      children: <Widget>[
-        Icon(
-          Ionicons.getIconData('ios-sad'),
-          size: 50,
-        ),
-        SizedBox(
-          height: 10,
-        ),
-        Text(
-          'Something went wrong!',
-        )
-      ],
-    );
   }
 }
