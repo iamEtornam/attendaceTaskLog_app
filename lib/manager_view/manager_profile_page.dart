@@ -53,8 +53,7 @@ class _ManagerProfilePageState extends State<ManagerProfilePage> {
       body: mUserId == null
           ? Container()
           : StreamBuilder<DocumentSnapshot>(
-              stream:
-                  _database.collection(users).document(mUserId).snapshots(),
+              stream: _database.collection(users).document(mUserId).snapshots(),
               builder: (context, snapshot) {
                 if (snapshot.hasError) {
                   return ErrorDisplayWidget();
@@ -341,7 +340,8 @@ class _ManagerProfilePageState extends State<ManagerProfilePage> {
                                   showPlatformDialog(
                                     context: context,
                                     builder: (_) => PlatformAlertDialog(
-                                      content: Text('Are you sure you want reset your Password?'),
+                                      content: Text(
+                                          'Are you sure you want reset your Password?'),
                                       actions: <Widget>[
                                         PlatformDialogAction(
                                           child: Text('Yes'),
@@ -380,6 +380,47 @@ class _ManagerProfilePageState extends State<ManagerProfilePage> {
                     );
                 }
               }),
+      bottomNavigationBar: Padding(
+        padding: const EdgeInsets.all(20.0),
+        child: Material(
+          type: MaterialType.button,
+          color: Colors.red,
+          borderRadius: BorderRadius.circular(10.0),
+          child: MaterialButton(
+            minWidth: MediaQuery.of(context).size.width / 2,
+            height: 45.0,
+            onPressed: () async {
+              showPlatformDialog(
+                context: context,
+                builder: (_) => PlatformAlertDialog(
+                  content: Text('Are you sure you want to Log out?'),
+                  actions: <Widget>[
+                    PlatformDialogAction(
+                      child: Text('Yes'),
+                      onPressed: () async {
+                        await logout(context);
+                      },
+                    ),
+                    PlatformDialogAction(
+                      child: Text('No'),
+                      onPressed: () {
+                        Navigator.of(context).pop();
+                      },
+                    ),
+                  ],
+                ),
+              );
+            },
+            child: Text(
+              'Logout',
+              style: TextStyle(
+                  fontWeight: FontWeight.w500,
+                  fontSize: 18,
+                  color: Colors.white),
+            ),
+          ),
+        ),
+      ),
     );
   }
 
