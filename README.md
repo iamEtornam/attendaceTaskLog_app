@@ -15,6 +15,9 @@
 * A little knowledge of Dart and Flutter
 * A brain to think 🤓🤓
 
+## APK
+* Release build apk can be found inside the apk folder
+
 ## Getting Started
 * Clone the repo 
 ````
