@@ -221,7 +221,7 @@ class _HomePageState extends State<HomePage> {
         visible: _isVisible,
         child: FloatingActionButton.extended(
           onPressed: () {
-            Navigator.of(context).pushNamed('/addTask');
+            Navigator.pushNamedAndRemoveUntil(context, '/addTask',    (Route<dynamic> route) => false,);
           },
           icon: Icon(
             AntDesign.getIconData('addfile'),
