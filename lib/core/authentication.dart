@@ -23,6 +23,6 @@ Future emailPasswordLogin(BuildContext context, String email, String password) a
       alertNotification(context, Colors.red, 'Something went wrong.');
     });
   }catch(e){
-
+debugPrint('error: $e');
   }
 }
