@@ -41,11 +41,11 @@ $flutter run
 
 | Android| IOS|
 |------|-------|
-|<img src="https://raw.githubusercontent.com/RegNex/attendaceTaskLog_app/master/screenshots/1.png" width="400" height="600">|<img src="https://raw.githubusercontent.com/RegNex/attendaceTaskLog_app/master/screenshots/1a.png" width="400" height="600">|
-|<img src="https://raw.githubusercontent.com/RegNex/attendaceTaskLog_app/master/screenshots/2.png" width="400" height="600">|<img src="https://raw.githubusercontent.com/RegNex/attendaceTaskLog_app/master/screenshots/2a.png" width="400" height="600">|
-|<img src="https://raw.githubusercontent.com/RegNex/attendaceTaskLog_app/master/screenshots/3.png" width="400" height="600">|<img src="https://raw.githubusercontent.com/RegNex/attendaceTaskLog_app/master/screenshots/3a.png" width="400" height="600">|
-|<img src="https://raw.githubusercontent.com/RegNex/attendaceTaskLog_app/master/screenshots/4.png" width="400" height="600">|<img src="https://raw.githubusercontent.com/RegNex/attendaceTaskLog_app/master/screenshots/4a.png" width="400" height="600">|
-|<img src="https://raw.githubusercontent.com/RegNex/attendaceTaskLog_app/master/screenshots/5.png" width="400" height="600">|<img src="https://raw.githubusercontent.com/RegNex/attendaceTaskLog_app/master/screenshots/5a.png" width="400" height="600">|
+|<img src="https://raw.githubusercontent.com/RegNex/attendaceTaskLog_app/master/screenshots/1.png" width="400" height="800">|<img src="https://raw.githubusercontent.com/RegNex/attendaceTaskLog_app/master/screenshots/1a.png" width="400" height="800">|
+|<img src="https://raw.githubusercontent.com/RegNex/attendaceTaskLog_app/master/screenshots/2.png" width="400" height="800">|<img src="https://raw.githubusercontent.com/RegNex/attendaceTaskLog_app/master/screenshots/2a.png" width="400" height="800">|
+|<img src="https://raw.githubusercontent.com/RegNex/attendaceTaskLog_app/master/screenshots/3.png" width="400" height="800">|<img src="https://raw.githubusercontent.com/RegNex/attendaceTaskLog_app/master/screenshots/3a.png" width="400" height="800">|
+|<img src="https://raw.githubusercontent.com/RegNex/attendaceTaskLog_app/master/screenshots/4.png" width="400" height="800">|<img src="https://raw.githubusercontent.com/RegNex/attendaceTaskLog_app/master/screenshots/4a.png" width="400" height="800">|
+|<img src="https://raw.githubusercontent.com/RegNex/attendaceTaskLog_app/master/screenshots/5.png" width="400" height="800">|<img src="https://raw.githubusercontent.com/RegNex/attendaceTaskLog_app/master/screenshots/5a.png" width="400" height="800">|
 
 
 ## 🤓 Author(s)
