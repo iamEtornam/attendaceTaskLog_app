@@ -29,7 +29,8 @@ saveNewTask(BuildContext context, String title, String description, startTime,
     _progressDialog.dismissProgressDialog(context);
     alertNotification(context, Colors.green, 'Task Saved!');
   }).then((_) {
-    Navigator.pushReplacementNamed(context, '/dashboard');
+     Navigator.pushNamedAndRemoveUntil(context, '/dashboard', (Route<dynamic> route) => false,);
+
   }).catchError((error) {
     _progressDialog.dismissProgressDialog(context);
     alertNotification(context, Colors.red, 'Could not save Task!');
@@ -74,7 +75,7 @@ saveEditTask(BuildContext context, String title, String description, startTime,
     _progressDialog.dismissProgressDialog(context);
     alertNotification(context, Colors.green, 'Editted Task Saved!');
   }).then((_) {
-    Navigator.pushReplacementNamed(context, '/dashboard');
+     Navigator.pushNamedAndRemoveUntil(context, '/dashboard', (Route<dynamic> route) => false,);
   }).catchError((error) {
     _progressDialog.dismissProgressDialog(context);
     alertNotification(context, Colors.red, 'Could not save Editted Task!');
