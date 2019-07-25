@@ -235,6 +235,7 @@ class _HomePageState extends State<HomePage> {
     );
   }
 
+  //pass data to editTaskPage
   editTask(DocumentSnapshot document) {
     Navigator.push(
         context,
