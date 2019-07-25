@@ -190,6 +190,7 @@ class _AddTaskPageState extends State<AddTaskPage> {
     );
   }
 
+  //validate task inputs
   validateTaskDetails(
       String title, String description, startTime, endTime) async {
     if (title.isNotEmpty && startTime != null && endTime != null ||
