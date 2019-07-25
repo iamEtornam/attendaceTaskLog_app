@@ -32,6 +32,7 @@ class _DashboardPageState extends State<DashboardPage> {
     super.initState();
   }
 
+
   void changePage(int index) {
      setState(() {
       currentIndex = index;
@@ -110,6 +111,7 @@ class _DashboardPageState extends State<DashboardPage> {
     );
   }
 
+  //check if user is already authenticated
   void isUserAuthenticated() async{
     FirebaseUser user = await _auth.currentUser();
     if(user == null){
