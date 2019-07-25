@@ -376,6 +376,7 @@ class _ProfilePageState extends State<ProfilePage> {
     );
   }
 
+  //change password
   void changeUserPassword(BuildContext context) async {
     await processPasswordChange(context);
   }
