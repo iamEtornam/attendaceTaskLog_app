@@ -18,6 +18,10 @@
 ## APK
 * Release build apk can be found inside the apk folder
 
+## Login Credentials 
+* For Employee login - email:sunumacbright@gmail.com / password:1234567890
+* For Manager login - email:johnmensah@mail.com / password:1234567890
+
 ## Getting Started
 * Clone the repo 
 ````
