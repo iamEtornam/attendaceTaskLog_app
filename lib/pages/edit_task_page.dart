@@ -52,7 +52,7 @@ class _EditTaskPageState extends State<EditTaskPage> {
               color: Colors.black,
               fontSize: 16.0,
             ),
-            keyboardType: TextInputType.phone,
+            keyboardType: TextInputType.text,
             enableInteractiveSelection: true,
             decoration: InputDecoration(
               hasFloatingPlaceholder: true,
@@ -91,7 +91,7 @@ class _EditTaskPageState extends State<EditTaskPage> {
             ),
             minLines: 4,
             maxLines: 10,
-            keyboardType: TextInputType.phone,
+            keyboardType: TextInputType.text,
             enableInteractiveSelection: true,
             decoration: InputDecoration(
               hasFloatingPlaceholder: true,
