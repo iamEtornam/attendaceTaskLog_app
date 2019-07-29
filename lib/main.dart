@@ -21,10 +21,10 @@ class MyApp extends StatelessWidget {
         primaryColorDark: Colors.black,
         primaryColorLight: Colors.white,
         primaryColor: Colors.black,
-        accentIconTheme: IconThemeData(color: Colors.black),
-        accentColor: Colors.black,
+        accentIconTheme: IconThemeData(color: Platform.isIOS ? Colors.black : Colors.white),
+        accentColor: Platform.isIOS ? Colors.black : Colors.white,
         accentColorBrightness: Brightness.dark,
-        primaryIconTheme: IconThemeData(color: Colors.black),
+        primaryIconTheme: IconThemeData(color: Platform.isIOS ? Colors.black : Colors.white),
         indicatorColor: Colors.black,
              fontFamily: 'Roboto',
           appBarTheme: AppBarTheme(
