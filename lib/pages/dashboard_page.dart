@@ -46,7 +46,7 @@ class _DashboardPageState extends State<DashboardPage> {
       extendBody: true,
       appBar: AppBar(
         centerTitle: true,
-        title: Text('Fasyl Attendance',style: TextStyle(fontSize: 20),),
+        title: Text('Attendance-Task',style: TextStyle(fontSize: 20),),
       ),
       body: SafeArea(
               child: Center(
