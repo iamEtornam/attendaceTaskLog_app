@@ -41,7 +41,7 @@ class _HomePageState extends State<HomePage> {
       appBar: AppBar(
         centerTitle: true,
         title: Text(
-          'Fasyl Tech. (Manager)',
+          'Attendance-Task (Manager)',
           style: TextStyle(fontSize: 20),
         ),
         actions: <Widget>[
