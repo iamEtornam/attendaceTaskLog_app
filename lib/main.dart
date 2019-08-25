@@ -15,7 +15,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Fasyl Attendance',
+      title: 'Attendance-Task',
       theme: ThemeData(
         brightness: Brightness.light,
         primaryColorDark: Colors.black,
