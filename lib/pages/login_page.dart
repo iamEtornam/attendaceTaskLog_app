@@ -62,7 +62,7 @@ class _LoginPageState extends State<LoginPage> {
               ),
               Center(
                   child: Text(
-                'Fasyl Technologies',
+                'Attendance-Task',
                 style: TextStyle(fontSize: 21, fontWeight: FontWeight.w500),
               )),
               SizedBox(height: 100),
