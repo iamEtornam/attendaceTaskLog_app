@@ -17,7 +17,6 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Attendance-Task',
       theme: ThemeData(
-        brightness: Platform.isIOS ? Brightness.dark : Brightness.light,
         primaryColorDark: Colors.black,
         primaryColorLight: Colors.white,
         primaryColor: Colors.black,
